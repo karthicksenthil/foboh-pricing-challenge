@@ -5,6 +5,7 @@ import { swaggerSpec } from './swagger';
 import productsRouter from './routes/products';
 import pricingProfilesRouter from './routes/pricingProfiles';
 import metadataRouter from './routes/metadata';
+import path from 'path';
 
 const app: Express = express();
 const PORT = process.env.PORT || 3001;
@@ -20,24 +21,28 @@ app.use('/api/metadata', metadataRouter);
 
 // Swagger Documentation
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
+app.use(express.static(path.join(__dirname, 'dist')));
 // Health check endpoint
 app.get('/health', (req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
 // Root endpoint
-app.get('/', (req: Request, res: Response) => {
-  res.json({
-    message: 'FOBOH Pricing API',
-    version: '1.0.0',
-    documentation: '/api-docs',
-    endpoints: {
-      products: '/api/products',
-      pricingProfiles: '/api/pricing-profiles',
-      metadata: '/api/metadata',
-    },
-  });
+// app.get('/', (req: Request, res: Response) => {
+//   res.json({
+//     message: 'FOBOH Pricing API',
+//     version: '1.0.0',
+//     documentation: '/api-docs',
+//     endpoints: {
+//       products: '/api/products',
+//       pricingProfiles: '/api/pricing-profiles',
+//       metadata: '/api/metadata',
+//     },
+//   });
+// });
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 // 404 handler
