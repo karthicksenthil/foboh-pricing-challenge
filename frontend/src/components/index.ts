@@ -1,0 +1,11 @@
+// Component exports for cleaner imports
+export { Header } from './Header';
+export { AlertMessage } from './AlertMessage';
+export { ActionButtons } from './ActionButtons';
+export { StatsPanel } from './StatsPanel';
+export { ProductFilters } from './ProductFilters';
+export { ProductTable } from './ProductTable';
+export { PricingAdjustmentForm } from './PricingAdjustmentForm';
+export { PricingWorkflow } from './PricingWorkflow';
+export { SavedProfiles } from './SavedProfiles';
+export { ProfileDetailsModal } from './ProfileDetailModal';
