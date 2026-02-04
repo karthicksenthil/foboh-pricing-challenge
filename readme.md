@@ -31,6 +31,26 @@ npm run dev
 ```
 ✅ App running at http://localhost:5173
 
+## Deploying the Application
+
+### Manual Deploy
+```bash
+# Production deploy, build front and backend and start server
+cd foboh-pricing-challenge
+npm install
+
+npm run deploy
+```
+
+### Docker Deploy
+```bash
+# Production deploy, build front and backend and start server
+cd foboh-pricing-challenge
+docker build -t foboh-pricing-challenge .
+
+docker run -d -p 3001:3001 --name pricing-app foboh-pricing-challenge
+```
+
 ## First Use Tutorial (2 minutes)
 
 ### Step 1: Search & Filter Products
